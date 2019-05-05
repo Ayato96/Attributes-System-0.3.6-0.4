@@ -1,0 +1,254 @@
+--[[Script Name: attributeEquip.lua
+Type: MoveEvent id all broni
+Location: data/movements/scripts
+<movevent type="Equip" itemid="2128-2194;2196-2322;2324-2342;2344-2465;2467-2469;2471;2473;2475;2478-2486;2489-2491;2494-2498;2501-2639;2641-2659;2661-5460;5462-6131;6133-7883;7887-7890;7904-8818;8822-8864;8873-8876;8893-9775;9779-9931" slot="right-hand" event="script" value="attributeEquip.lua"/>
+    <movevent type="DeEquip" itemid="2128-2194;2196-2322;2324-2342;2344-2465;2467-2469;2471;2473;2475;2478-2486;2489-2491;2494-2498;2501-2639;2641-2659;2661-5460;5462-6131;6133-7883;7887-7890;7904-8818;8822-8864;8873-8876;8893-9775;9779-9931" slot="right-hand" event="script" value="attributeEquip.lua"/>
+    <movevent type="Equip" itemid="2128-2194;2196-2322;2324-2342;2344-2465;2467-2469;2471;2473;2475;2478-2486;2489-2491;2494-2498;2501-2639;2641-2659;2661-5460;5462-6131;6133-7883;7887-7890;7904-8818;8822-8864;8873-8876;8893-9775;9779-9931" slot="left-hand" event="script" value="attributeEquip.lua"/>
+    <movevent type="DeEquip" itemid="2128-2194;2196-2322;2324-2342;2344-2465;2467-2469;2471;2473;2475;2478-2486;2489-2491;2494-2498;2501-2639;2641-2659;2661-5460;5462-6131;6133-7883;7887-7890;7904-8818;8822-8864;8873-8876;8893-9775;9779-9931" slot="left-hand" event="script" value="attributeEquip.lua"/>
+Lua Code:
+Lua:]]--
+
+function setItemName(uid,name)
+	return doItemSetAttribute(uid,'name',name)
+end
+function setItemArmor(uid,name)
+	return doItemSetAttribute(uid,'armor',name)
+end
+function setItemDefense(uid,name)
+	return doItemSetAttribute(uid,'defense',name)
+end
+function setItemAttack(uid,name)
+	return doItemSetAttribute(uid,'attack',name)
+end
+function getItemAttack(uid)
+	return getItemAttribute(uid,'attack')
+end
+function getItemDefense(uid)
+	return getItemAttribute(uid,'defense')
+end
+
+function setItemExtraAttack(uid,name)
+	return doItemSetAttribute(uid,'extraattack',name)
+end
+function getItemExtraAttack(uid)
+	return getItemAttribute(uid,'extraattack')
+end
+
+function setItemAttackSpeed(uid,name)
+	return doItemSetAttribute(uid,'attackspeed',name)
+end
+function getItemAttackSpeed(uid)
+	return getItemAttribute(uid,'attackspeed')
+end
+
+function setItemExtraDefense(uid,name)
+	return doItemSetAttribute(uid,'extradefense',name)
+end
+function getItemExtraDefense(uid)
+	return getItemAttribute(uid,'extraadefense')
+end
+
+
+local attr = {
+    stock = 2800,
+    str = 2801,
+    agi = 2802,
+    hth = 2803,
+    ene = 2804,
+    mlpool = 2805
+    }
+local v = {
+    [1] = {st = 1, ag = 2, ht = 3, en = 5},
+    [2] = {st = 1, ag = 2, ht = 3, en = 5},
+    [3] = {st = 1, ag = 2, ht = 3, en = 5},
+    [4] = {st = 1, ag = 2, ht = 3, en = 5},
+    [5] = {st = 1, ag = 2, ht = 3, en = 5},
+    [86] = {st = 1, ag = 2, ht = 3, en = 5},
+
+    [6] = {st = 1, ag = 2, ht = 3, en = 5},
+    [7] = {st = 1, ag = 2, ht = 3, en = 5},
+    [8] = {st = 1, ag = 2, ht = 3, en = 5},
+    [9] = {st = 1, ag = 2, ht = 3, en = 5},
+    [10] = {st = 1, ag = 2, ht = 3, en = 5},
+    [87] = {st = 1, ag = 2, ht = 3, en = 5},
+
+    [11] = {st = 1, ag = 2, ht = 3, en = 5},
+    [12] = {st = 1, ag = 2, ht = 3, en = 5},
+    [13] = {st = 1, ag = 2, ht = 3, en = 5},
+    [14] = {st = 1, ag = 2, ht = 3, en = 5},
+    [15] = {st = 1, ag = 2, ht = 3, en = 5},
+    [88] = {st = 1, ag = 2, ht = 3, en = 5},
+
+    [16] = {st = 1, ag = 2, ht = 3, en = 5},
+    [17] = {st = 1, ag = 2, ht = 3, en = 5},
+    [18] = {st = 1, ag = 2, ht = 3, en = 5},
+    [19] = {st = 1, ag = 2, ht = 3, en = 5},
+    [20] = {st = 1, ag = 2, ht = 3, en = 5},
+    [89] = {st = 1, ag = 2, ht = 3, en = 5},
+
+    [21] = {st = 1, ag = 2, ht = 3, en = 5},
+    [22] = {st = 1, ag = 2, ht = 3, en = 5},
+    [23] = {st = 1, ag = 2, ht = 3, en = 5},
+    [24] = {st = 1, ag = 2, ht = 3, en = 5},
+    [25] = {st = 1, ag = 2, ht = 3, en = 5},
+    [90] = {st = 1, ag = 2, ht = 3, en = 5},
+
+    [26] = {st = 1, ag = 2, ht = 3, en = 5},
+    [27] = {st = 1, ag = 2, ht = 3, en = 5},
+    [28] = {st = 1, ag = 2, ht = 3, en = 5},
+    [29] = {st = 1, ag = 2, ht = 3, en = 5},
+    [30] = {st = 1, ag = 2, ht = 3, en = 5},
+    [91] = {st = 1, ag = 2, ht = 3, en = 5},
+
+    [31] = {st = 1, ag = 2, ht = 3, en = 5},
+    [32] = {st = 1, ag = 2, ht = 3, en = 5},
+    [33] = {st = 1, ag = 2, ht = 3, en = 5},
+    [34] = {st = 1, ag = 2, ht = 3, en = 5},
+    [35] = {st = 1, ag = 2, ht = 3, en = 5},
+    [92] = {st = 1, ag = 2, ht = 3, en = 5},
+
+    [36] = {st = 1, ag = 2, ht = 3, en = 5},
+    [37] = {st = 1, ag = 2, ht = 3, en = 5},
+    [38] = {st = 1, ag = 2, ht = 3, en = 5},
+    [39] = {st = 1, ag = 2, ht = 3, en = 5},
+    [40] = {st = 1, ag = 2, ht = 3, en = 5},
+    [93] = {st = 1, ag = 2, ht = 3, en = 5},
+
+    [41] = {st = 1, ag = 2, ht = 3, en = 5},
+    [42] = {st = 1, ag = 2, ht = 3, en = 5},
+    [43] = {st = 1, ag = 2, ht = 3, en = 5},
+    [44] = {st = 1, ag = 2, ht = 3, en = 5},
+    [45] = {st = 1, ag = 2, ht = 3, en = 5},
+    [94] = {st = 1, ag = 2, ht = 3, en = 5},
+
+    [46] = {st = 1, ag = 2, ht = 3, en = 5},
+    [47] = {st = 1, ag = 2, ht = 3, en = 5},
+    [48] = {st = 1, ag = 2, ht = 3, en = 5},
+    [49] = {st = 1, ag = 2, ht = 3, en = 5},
+    [50] = {st = 1, ag = 2, ht = 3, en = 5},
+    [95] = {st = 1, ag = 2, ht = 3, en = 5},
+
+    [51] = {st = 1, ag = 2, ht = 3, en = 5},
+    [52] = {st = 1, ag = 2, ht = 3, en = 5},
+    [53] = {st = 1, ag = 2, ht = 3, en = 5},
+    [54] = {st = 1, ag = 2, ht = 3, en = 5},
+    [55] = {st = 1, ag = 2, ht = 3, en = 5},
+    [96] = {st = 1, ag = 2, ht = 3, en = 5},
+
+    [56] = {st = 1, ag = 2, ht = 3, en = 5},
+    [57] = {st = 1, ag = 2, ht = 3, en = 5},
+    [58] = {st = 1, ag = 2, ht = 3, en = 5},
+    [59] = {st = 1, ag = 2, ht = 3, en = 5},
+    [60] = {st = 1, ag = 2, ht = 3, en = 5},
+    [97] = {st = 1, ag = 2, ht = 3, en = 5},
+
+    [61] = {st = 1, ag = 2, ht = 3, en = 5},
+    [62] = {st = 1, ag = 2, ht = 3, en = 5},
+    [63] = {st = 1, ag = 2, ht = 3, en = 5},
+    [64] = {st = 1, ag = 2, ht = 3, en = 5},
+    [65] = {st = 1, ag = 2, ht = 3, en = 5},
+    [98] = {st = 1, ag = 2, ht = 3, en = 5},
+
+    [66] = {st = 1, ag = 2, ht = 3, en = 5},
+    [67] = {st = 1, ag = 2, ht = 3, en = 5},
+    [68] = {st = 1, ag = 2, ht = 3, en = 5},
+    [69] = {st = 1, ag = 2, ht = 3, en = 5},
+    [70] = {st = 1, ag = 2, ht = 3, en = 5},
+    [99] = {st = 1, ag = 2, ht = 3, en = 5}
+    }
+function onEquip(cid, item, slot)
+local stockPoints = getPlayerStorageValue(cid, attr.stock)
+local MLpool = getPlayerStorageValue(cid, attr.mlpool)
+local weaponTypes = {1, 4, 6}
+local helmet = getPlayerSlotItem(cid, CONST_SLOT_HEAD)
+local armor = getPlayerSlotItem(cid, CONST_SLOT_ARMOR)
+local legs = getPlayerSlotItem(cid, CONST_SLOT_LEFT)
+local boots = getPlayerSlotItem(cid, CONST_SLOT_FEET)
+local rightHand = getPlayerSlotItem(cid, CONST_SLOT_RIGHT)
+local leftHand = getPlayerSlotItem(cid, CONST_SLOT_LEFT)
+local strength = getPlayerStorageValue(cid, attr.str)
+local agility = getPlayerStorageValue(cid, attr.agi)
+local energy = getPlayerStorageValue(cid, attr.ene)
+local health = getPlayerStorageValue(cid, attr.hth)
+    for voc, info in pairs(v) do
+        if getPlayerVocation(cid) == voc then
+            if rightHand.itemid > 0 then
+                local strength2 = getPlayerStorageValue(cid, attr.str)
+                local strfrm = strength2*info.st
+                if isInArray(weaponTypes, getItemWeaponType(rightHand.uid)) then
+                    setItemExtraAttack(rightHand.uid, strfrm)
+                end
+            end    
+            if leftHand.itemid > 0 then
+                local strength2 = getPlayerStorageValue(cid, attr.str)
+                local strfrm = strength2*info.st
+                if isInArray(weaponTypes, getItemWeaponType(leftHand.uid)) then    
+                    setItemExtraAttack(leftHand.uid, strfrm)
+                end
+            end
+            local agility2 = getPlayerStorageValue(cid, attr.agi)
+            local agifrm = agility2*info.ag
+            if rightHand.itemid > 0 then
+                if isInArray(weaponTypes, getItemWeaponType(rightHand.uid)) or getItemWeaponType(rightHand.uid) == 4 then
+                    setItemExtraDefense(rightHand.uid, agifrm)
+                        if getItemAttackSpeed(rightHand.uid) == true then
+                        setItemAttackSpeed(rightHand.uid, agifrm)
+                    end
+                end    
+            end
+            if leftHand.itemid > 0 then
+                if isInArray(weaponTypes, getItemWeaponType(leftHand.uid)) or getItemWeaponType(leftHand.uid) == 4 then    
+                    setItemExtraDefense(leftHand.uid, agifrm)
+                    if getItemAttackSpeed(leftHand.uid) == true then
+                        setItemAttackSpeed(leftHand.uid, agifrm)
+                    end    
+                end
+            end
+        end
+    end    
+return true
+end    
+function onDeEquip(cid, item, slot)
+local stockPoints = getPlayerStorageValue(cid, attr.stock)
+local MLpool = getPlayerStorageValue(cid, attr.mlpool)
+local weaponTypes = {1, 4, 6}
+local helmet = getPlayerSlotItem(cid, CONST_SLOT_HEAD)
+local armor = getPlayerSlotItem(cid, CONST_SLOT_ARMOR)
+local legs = getPlayerSlotItem(cid, CONST_SLOT_LEFT)
+local boots = getPlayerSlotItem(cid, CONST_SLOT_FEET)
+local rightHand = getPlayerSlotItem(cid, CONST_SLOT_RIGHT)
+local leftHand = getPlayerSlotItem(cid, CONST_SLOT_LEFT)
+local strength = getPlayerStorageValue(cid, attr.str)
+local agility = getPlayerStorageValue(cid, attr.agi)
+local energy = getPlayerStorageValue(cid, attr.ene)
+local health = getPlayerStorageValue(cid, attr.hth)
+    for voc2, info2 in pairs(v) do
+        if getPlayerVocation(cid) == voc2 then
+            if item.itemid > 0 then
+                local strength2 = getPlayerStorageValue(cid, attr.str)
+                local strfrm = strength2*info2.st
+                setItemExtraAttack(item.uid, 0)
+            end    
+            if item.itemid > 0 then
+                local strength2 = getPlayerStorageValue(cid, attr.str)
+                local strfrm = strength2*info2.st
+                setItemExtraAttack(item.uid, 0)
+            end
+            local agility2 = getPlayerStorageValue(cid, attr.agi)
+            local agifrm = agility2*info2.ag
+            if item.itemid > 0 then
+                setItemExtraDefense(item.uid, 0)
+                if getItemAttackSpeed(item.uid) == true then
+                    setItemAttackSpeed(item.uid, 0)
+                end    
+            end
+            if item.itemid > 0 then
+                setItemExtraDefense(item.uid, 0)
+                if getItemAttackSpeed(item.uid) == true then
+                    setItemAttackSpeed(item.uid, 0)
+                end
+            end    
+        end
+    end    
+return true
+end
